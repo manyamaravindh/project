@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
                 sh 'pwd'
                 sh 'mvn validate'
-                sh 'compile'
+                sh 'mvn compile'
             }
         }
         stage('Test') {
