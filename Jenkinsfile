@@ -20,12 +20,11 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh 'mvn deploy'
+                sh 'pwd'
+                sh 'ls'
             }
         }
-                 stage('Publish') {
-            steps {
-                echo 'Publishing....'
-                sh 'scp /home/centos/project/target/*.war /home/centos/apache-tomcat-7.0.94/webapps '
+               
             }
         }
     }
