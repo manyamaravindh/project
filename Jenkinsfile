@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo 'Publishing....'
                 sh 'pwd'               
-                sh 'scp /var/lib/jenkins/workspace/Validate/target/*.war /home/centos/apache-tomcat-7.0.94/webapps'  
+                sh 'sudo cp /var/lib/jenkins/workspace/Validate/target/*.war /home/centos/apache-tomcat-7.0.94/webapps'  
             }
                }
         
