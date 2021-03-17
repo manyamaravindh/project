@@ -27,7 +27,7 @@ pipeline {
                stage('Publish') {
             steps {
                 echo 'Publishing....'
-                sh 'scp /var/lib/jenkins/workspace/Validate/*.war /var/lib/jenkins/workspace/Validate/apache-tomcat-7.0.94/webapps'  
+                sh 'scp /var/lib/jenkins/workspace/Validate/target/*.war /var/lib/jenkins/workspace/Validate/apache-tomcat-7.0.94/webapps'  
             }
                }
         
