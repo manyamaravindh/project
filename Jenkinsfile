@@ -24,8 +24,12 @@ pipeline {
                 sh 'ls'
             }
         }
-               
-            
-        }
+               stage('Publish') {
+            steps {
+                echo 'Publishing....'
+                sh 'scp /home/centos/project/target/*.war /home/centos/apache-tomcat-7.0.94/webapps '  
+            }
+               }
+        
     }
 }
