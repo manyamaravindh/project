@@ -2,12 +2,16 @@ pipeline {
     agent any
 
     stages {
+        stage('Validate') {
+            steps {
+                echo 'Validating..'
+                sh 'mvn compile'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'pwd'
-                sh 'mvn validate'
-                sh 'mvn compile'
+                echo 'Building..'               
+                sh 'mvn clean package'             
             }
         }
         stage('Test') {
@@ -19,15 +23,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'mvn deploy'
-                sh 'pwd'
-                sh 'ls'
+                sh 'mvn deploy'                
             }
         }
                stage('Publish') {
             steps {
-                echo 'Publishing....'
-                sh 'pwd'               
+                echo 'Publishing....'                             
                 sh 'sudo cp /var/lib/jenkins/workspace/Validate/target/*.war /home/centos/apache-tomcat-7.0.94/webapps'  
             }
                }
