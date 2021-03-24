@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: javacalc
-        image: aravindhmanyam/javacalc
+        image: httpd
         ports:
         - containerPort: 8080
