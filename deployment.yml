@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecomm-deployment
+  name: javacalc-deployment
   labels: 
-    app: ecomm-app
+    app: javacalc-app
     tier: frontend
 spec:
   replicas: 4
