@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: javacalc
-        image: aravindhmanyam/calc
+        image: aravindhmanyam/javacalc
         ports:
         - containerPort: 8080
