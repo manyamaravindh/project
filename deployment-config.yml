@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: depo-javacalc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+       component: web
+  template:
+    metadata:
+      name: pod-javacalc
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: container-javacalc
+          image: aravindhmanyam/javacalc
+          ports:
+            - containerPort: 8080
