@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web
+  name: javacalc
 spec:
   containers:
-  - name: web-container
+  - name: javacalc
     image: aravindhmanyam/javacalc
     ports:
     - containerPort: 8080
