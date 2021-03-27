@@ -1,0 +1,8 @@
+---
+hosts: kops-workstation
+- name: git repo
+  shell: |
+    sudo git clone https://github.com/manyamaravindh/project.git
+    cd project
+    kubectl apply -f app.yml
+ ...    
