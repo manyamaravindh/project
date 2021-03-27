@@ -16,7 +16,7 @@
         sudo mv kops-linux-amd64 /usr/local/bin/kops
     - name: install aws cli
       shell: |
-        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        curl -LO "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
         sudo ./aws/install
     - name: echoing
