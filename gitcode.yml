@@ -1,10 +1,11 @@
 ---
 - name: git repo
   hosts: kops-workstation
+  become: yes
   tasks: 
     - name: get code
       shell: |
-        sudo git clone https://github.com/manyamaravindh/project.git
+        git clone https://github.com/manyamaravindh/project.git
         cd project
         kubectl apply -f app.yml
 ...
