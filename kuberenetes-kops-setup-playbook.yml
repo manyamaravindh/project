@@ -3,36 +3,36 @@
   hosts: kops-workstation
   tasks:
     - name: installing kubectl
-	    shell: |
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-        curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-        echo "$(<kubectl.sha256) kubectl" | sha256sum --check
-        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-        kubectl version --client
-	   - name: install kops
-	     shell: |
-         curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
-         chmod +x kops-linux-amd64
-         sudo mv kops-linux-amd64 /usr/local/bin/kops
-	   - name: install aws cli
-	     shell: |
-         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-         unzip awscliv2.zip
-         sudo ./aws/install
-	   - name: echoing
-	     shell: |
-		     echo "Create an IAM user/role with Route53, EC2, IAM and S3 full access & Attach IAM role to ubuntu instance "
-	   - name: creating s3 bucket
-	     shell: |
-		     aws s3 mb s3://devops-final-project
-	     ignore_errors: yes
-	   - name: creating cluster state - 1
-       shell: echo | ssh-keygen -P ''
-       ignore_errors: yes
-	   - name: creating cluster state - 2
-	     shell: export KOPS_STATE_STORE=s3://devops-final-project
-	   - name: creating cluster state -3
-	     shell: |
-         kops create cluster --name=qa2.k8s.local  --state=s3://devops-final-project  --zones=us-east-1a --node-count=1  --node-size=t2.medium  --master-size=t2.medium --yes
+	  shell: |
+		curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+		curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+		echo "$(<kubectl.sha256) kubectl" | sha256sum --check
+		sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+		kubectl version --client
+	- name: install kops
+	  shell: |
+		curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+		chmod +x kops-linux-amd64
+		sudo mv kops-linux-amd64 /usr/local/bin/kops
+	- name: install aws cli
+	  shell: |
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+		unzip awscliv2.zip
+		sudo ./aws/install
+	- name: echoing
+	  shell: |
+		echo "Create an IAM user/role with Route53, EC2, IAM and S3 full access & Attach IAM role to ubuntu instance "
+	- name: creating s3 bucket
+	  shell: |
+		aws s3 mb s3://devops-final-project
+	  ignore_errors: yes		
+	- name: creating cluster state - 1
+      shell: echo | ssh-keygen -P ''
+      ignore_errors: yes
+	- name: creating cluster state - 2
+	  shell: | 
+	    export KOPS_STATE_STORE=s3://devops-final-project
+	- name: creating cluster state -3
+	  shell: |
+	    kops create cluster --name=qa2.k8s.local  --state=s3://devops-final-project  --zones=us-east-1a --node-count=1  --node-size=t2.medium  --master-size=t2.medium --yes
 ...
-	  
