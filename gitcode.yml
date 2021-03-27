@@ -1,6 +1,7 @@
 ---
-hosts: kops-workstation
 - name: git repo
+hosts: kops-workstation
+- name: get code
   shell: |
     sudo git clone https://github.com/manyamaravindh/project.git
     cd project
