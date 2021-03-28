@@ -1,14 +1,15 @@
-hosts: server
-become: yes
-tasks:
-- name: basic installations
-  yum:
-    name:
-      - vim
-      - wget
-      - git
-      - java-1.8.0*
-      - unzip
-    state: present
-      
-  
+---
+- name: installations for Java Devops 
+  hosts: server
+  become: yes
+  tasks:
+  - name: basic installations
+    yum:
+      name:
+        - vim
+        - wget
+        - git
+        - java-1.8.0*
+        - unzip
+      state: present
+...
