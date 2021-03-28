@@ -12,4 +12,8 @@
         - java-1.8.0*
         - unzip
       state: present
+    - name: install maven
+      yum:
+        name: maven
+        state: present 
 ...
