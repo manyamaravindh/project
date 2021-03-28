@@ -1,0 +1,8 @@
+---
+- name: delete kubernetes cluster
+  hosts: k8-worstation
+  tasks:
+  - name: delete k8s cluster
+    shell: |
+      kops delete cluster --name=qa2.k8s.local  --state=s3://devops-final-project --yes
+...
