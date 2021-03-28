@@ -15,5 +15,15 @@
   - name: install maven
     yum:
       name: maven
-      state: present 
+      state: present
+  - name: install docker
+    shell: |
+      curl -fsSL https://get.docker.com -o get-docker.sh
+      sh get-docker.sh
+      sudo usermod -aG docker $(whoami)
+  - name:
+    service:
+      name: docker
+      enabled: yes
+      state: restarted
 ...
