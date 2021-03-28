@@ -1,6 +1,6 @@
 ---
 - name: delete kubernetes cluster
-  hosts: k8-worstation
+  hosts: kops-workstation
   tasks:
   - name: delete k8s cluster
     shell: |
