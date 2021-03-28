@@ -17,14 +17,13 @@
       name: maven
       state: present
   - name: install sonarqube
-    get_url:
     become: no
+    get_url:
       url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-6.7.7.zip
       dest: /home/centos/
-      become: no
   - name: unzip sonar
-    unarchive:
     become: no
+    unarchive:
       src: /home/centos/sonarqube-6.7.7.zip
       dest: /home/centos/
       remote_src: True
