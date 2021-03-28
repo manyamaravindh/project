@@ -18,16 +18,19 @@
       state: present
   - name: install sonarqube
     get_url:
+    become: no
       url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-6.7.7.zip
       dest: /home/centos/
       become: no
   - name: unzip sonar
     unarchive:
+    become: no
       src: /home/centos/sonarqube-6.7.7.zip
       dest: /home/centos/
       remote_src: True
   - name: start Sonar port -9000
     shell: /home/centos/sonarqube-6.7.7/bin/linux-x86-64/sonar.sh start || /home/centos/sonarqube-6.7.7/bin/linux-x86-64/sonar.sh status 
+    become: no
   - name: install docker
     shell: |
       curl -fsSL https://get.docker.com -o get-docker.sh
