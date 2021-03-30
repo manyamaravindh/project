@@ -67,8 +67,7 @@
     become: no
   - name: start tomcat
     shell: |
-      cd /home/centos
-      apache-tomcat-7.0.94/bin/startup.sh
+      cd /home/centos/apache-tomcat-7.0.94/bin || ./startup.sh
     become: no
   - name: install docker
     shell: |
