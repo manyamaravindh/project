@@ -31,6 +31,7 @@
     shell: /home/centos/sonarqube-6.7.7/bin/linux-x86-64/sonar.sh start || /home/centos/sonarqube-6.7.7/bin/linux-x86-64/sonar.sh status 
     become: no
   - name: 
+    hosts: server
     vars_prompt: 
       - name: "sonar url"
         prompt: "please enter sonarqube ip address"
