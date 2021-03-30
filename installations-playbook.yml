@@ -72,9 +72,9 @@
     yum:
       name: docker
       state: present
-    - name: Start docker
-      service:
-        name: docker
-        enabled: yes
-        state: started
+  - name: Start docker
+    service:
+      name: docker
+      enabled: yes
+      state: started
 ...
