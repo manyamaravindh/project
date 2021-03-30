@@ -44,7 +44,7 @@
     get_url:
       url: https://download.sonatype.com/nexus/oss/nexus-2.14.18-01-bundle.tar.gz
       dest: /home/centos
-      become: no
+    become: no
   - name: unzip nexus
     archive:
       src: /home/centos/nexus-2.14.18-01-bundle.tar.gz
