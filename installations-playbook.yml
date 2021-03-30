@@ -66,13 +66,15 @@
       remote_src: yes
     become: no
   - name: start tomcat
-    shell: "/home/centos/apache-tomcat-7.0.94/bin/startup.sh"
+    shell: |
+      cd /home/centos
+      apache-tomcat-7.0.94/bin/startup.sh
     become: no
   - name: install docker
-    yum:
-      name: docker
-      state: present
-    become: yes
+    shell: |
+      curl -fsSL https://get.docker.com -o get-docker.sh
+      sh get-docker.sh
+    become: no
   - name: Start docker
     service:
       name: docker
