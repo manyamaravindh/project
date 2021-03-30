@@ -39,7 +39,7 @@
     - name: "sonar command"
       prompt: "loin with admin and admin as credentials and generate the mvn command and paste it below"
       private: no
-    tasks:
+  tasks:
   - name: download nexus
     get_url:
       url: https://download.sonatype.com/nexus/oss/nexus-2.14.18-01-bundle.tar.gz
