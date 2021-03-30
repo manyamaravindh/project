@@ -46,7 +46,7 @@
       dest: /home/centos
     become: no
   - name: unzip nexus
-    archive:
+    unarchive:
       src: /home/centos/nexus-2.14.18-01-bundle.tar.gz
       dest: /home/centos
       remote_src: yes
