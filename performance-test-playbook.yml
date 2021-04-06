@@ -1,0 +1,8 @@
+---
+- name: Sonar Analysis
+  hosts: server
+  become: yes
+  tasks:
+  - name: Sonar Login
+    shell: |
+      mvn sonar:sonar  -Dsonar.host.url=http://3.215.22.19:9000 -Dsonar.login=e21a9e90a902ec9497ca62f1ea44ff65b97fa8c1'
