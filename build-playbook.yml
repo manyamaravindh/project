@@ -1,0 +1,7 @@
+---
+- name: maven build
+  hosts: server
+  tasks:
+    - name: mvn package
+      shell: |
+        cd /home/centos/project/ && mvn clean package
