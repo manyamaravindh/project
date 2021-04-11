@@ -1,0 +1,6 @@
+---
+- name: deploy
+  hosts: server
+  tasks:
+    - name: deploy to Nexus
+      shell: cd /home/centos/project && mvn deploy
