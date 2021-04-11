@@ -1,0 +1,6 @@
+---
+- name: deploy to tomcat
+  hosts: server
+  tasks:
+    - name: deploy to tomcat
+      shell: cp /home/centos/project/target/*.war /home/centos/apache-tomcat-7.0.94/webapps/
