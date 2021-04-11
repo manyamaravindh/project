@@ -1,0 +1,11 @@
+---
+- name: docker push
+  hosts: server
+  tasks:
+    - name: docker push image
+      shell: |
+        (docker stop calculatorContainer && docker rm calculatorContainer) || echo "container is notrunning"
+        cd /home/centos/project && docker build -t aravindhmanyam/calc .
+        docker run --name calculatorContainer -dt -p 8080:8080 aravindhmanyam/calc
+        echo "docker container running on port 8080"
+          
