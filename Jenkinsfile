@@ -33,10 +33,7 @@ pipeline {
 		stage("docker build"){
 			steps{
 				node('ansible-node'){
-					sh '(docker stop calculatorContainer && docker rm calculatorContainer) || echo "container is notrunning" '
-					sh 'cd /home/centos/project && docker build -t aravindhmanyam/calc .'
-					sh 'docker run --name calculatorContainer -dt -p 8080:8080 aravindhmanyam/calc '
-					sh 'echo "docker container running on port 8080" '
+					sh 'cd /home/centos/ && ansible-playbook -i ./project/hosts.ini ./project/docker-build-playbook.yml -v'
 				}
 			}
 		}
