@@ -50,7 +50,7 @@ pipeline {
 		stage("deploy"){
 			steps{
 				node('ansible-node'){
-					sh 'cp /home/centos/project/target/*.war /home/centos/apache-tomcat-7.0.94/webapps/'
+					sh 'cd /home/centos/ && ansible-playbook -i ./project/hosts.ini ./project/deploy-playbook.yml -v'
 				}
 			}
 		}
