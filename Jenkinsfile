@@ -58,7 +58,7 @@ pipeline {
 		stage("release"){
 			steps{
 				node('ansible-node'){
-					sh 'cd /home/centos/project && mvn deploy'
+					sh 'cd /home/centos/project && ansible-playbook -i ./project/hosts.ini ./project/release-playbook.yml -v'
 				}
 			}
 		}
